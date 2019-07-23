@@ -39,4 +39,38 @@ class TicTacToe
   # position_taken?
   # returns true/false based on whether the position on the
   # board is already occupied
+  def position_taken?(index)
+    if @board[index] != " "
+      true
+    else
+      false
+    end
+  end
+  
+  # valid_move?
+  # returns true/false based on whether the position is
+  # already occupied
+  def valid_move?(index)
+    # checks that the attempted move is within the bounds
+    # of the game board
+    if index < 9
+      if position_taken?(index)
+        false
+      else
+        true
+      end
+    end
+  end
+  
+  # turn_count
+  # counts occupied positions
+  def turn_count
+    occupied_count = 0
+    @board.each{|position|
+      if position == "X" || position == "O"
+        occupied_count += 1
+      end
+    }
+    occupied_count
+  end
 end
